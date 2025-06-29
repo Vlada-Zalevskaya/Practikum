@@ -12,29 +12,14 @@ public class CarDealership {
         private int price;
         private CarType type;
 
-        public Car(String VIN, String model, String manufacturer, LocalDateTime made, float mileage, int price) {
+        public Car(String VIN, String model, String manufacturer, LocalDateTime made, float mileage, int price, CarType type) {
             this.VIN = VIN;
             this.model = model;
             this.manufacturer = manufacturer;
             this.made = made;
             this.mileage = mileage;
             this.price = price;
-        }
-
-        public String VIN() {
-            return VIN;
-        }
-
-        public String manufacturer() {
-            return manufacturer;
-        }
-
-        public int price() {
-            return price;
-        }
-
-        public float mileage() {
-            return mileage;
+            this.type = type;
         }
 
         @Override
@@ -103,7 +88,7 @@ public class CarDealership {
                     break;
                 case "create":
                     dealership.create(new Car(scin.next(), scin.next(), scin.next(), LocalDateTime.parse(scin.next()),
-                            scin.nextFloat(), scin.nextInt()));
+                            scin.nextFloat(), scin.nextInt(), CarType.valueOf(scin.next())));
                     break;
                 case "getManufacturedBy":
                     dealership.getManufacturedBy(scin.next()).forEach(c -> System.out.println(c.VIN));
